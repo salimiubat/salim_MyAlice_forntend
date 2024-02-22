@@ -80,6 +80,7 @@ export default function ContactInfoTable() {
     }
   };
   
+  
 
   const handleEditContact = () => {
     api.patch(`http://127.0.0.1:8000/api/contact/contact_info/${selectedRow.id}/`, newContact)
