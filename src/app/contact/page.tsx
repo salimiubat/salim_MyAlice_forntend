@@ -107,16 +107,16 @@ const handleEditContact = () => {
     });
 };
 
-  const handleDelete = (row) => {
-    api.delete(`http://127.0.0.1:8000/api/contact/contact_info/${row.id}/`)
-      .then(response => {
-        setRows(prevRows => prevRows.filter(item => item.id !== row.id));
-        handleCloseModal();
-      })
-      .catch(error => {
-        console.error('Error deleting row:', error);
-      });
-  };
+const handleDelete = (row: Contact) => {
+  api.delete(`http://127.0.0.1:8000/api/contact/contact_info/${row.id}/`)
+    .then(response => {
+      setRows(prevRows => prevRows.filter(item => item.id !== row.id));
+      handleCloseModal();
+    })
+    .catch(error => {
+      console.error('Error deleting row:', error);
+    });
+};
 
 
   const handleChangePage = (event, newPage) => {
