@@ -77,6 +77,8 @@ export default function ContactInfoTable() {
         address: row.address
       });
       setOpenModal(true);
+    } else {
+      setSelectedRow(null); 
     }
   };
   
