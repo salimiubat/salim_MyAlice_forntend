@@ -67,16 +67,19 @@ export default function ContactInfoTable() {
   };
   
 
-  const handleEdit = (row: Contact) => {
-    setSelectedRow(row);
-    setNewContact({
-      name: row.name,
-      email: row.email,
-      phone_number: row.phone_number,
-      address: row.address
-    });
-    setOpenModal(true);
+  const handleEdit = (row: Contact | null) => { 
+    if (row) {
+      setSelectedRow(row);
+      setNewContact({
+        name: row.name,
+        email: row.email,
+        phone_number: row.phone_number,
+        address: row.address
+      });
+      setOpenModal(true);
+    }
   };
+  
 
   const handleEditContact = () => {
     api.patch(`http://127.0.0.1:8000/api/contact/contact_info/${selectedRow.id}/`, newContact)
