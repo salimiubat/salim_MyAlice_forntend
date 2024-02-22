@@ -67,40 +67,45 @@ export default function ContactInfoTable() {
   };
   
 
-  const handleEdit = (row: Contact | null) => { 
-    if (row) {
-      setSelectedRow(row);
-      setNewContact({
-        name: row.name,
-        email: row.email,
-        phone_number: row.phone_number,
-        address: row.address
-      });
-      setOpenModal(true);
-    } else {
-      setSelectedRow(null); 
-    }
-  };
-  
+const handleEdit = (row: Contact | null) => { 
+  if (row) {
+    setSelectedRow(row);
+    setNewContact({
+      name: row.name,
+      email: row.email,
+      phone_number: row.phone_number,
+      address: row.address
+    });
+    setOpenModal(true);
+  } else {
+    setSelectedRow(null); 
+  }
+};
 
-  const handleEditContact = () => {
-    api.patch(`http://127.0.0.1:8000/api/contact/contact_info/${selectedRow.id}/`, newContact)
-      .then(response => {
-        setRows(prevRows => {
-          const updatedRows = prevRows.map(row => {
-            if (row.id === selectedRow.id) {
-              return { ...row, ...newContact };
-            }
-            return row;
-          });
-          return updatedRows;
+
+const handleEditContact = () => {
+  if (!selectedRow) {
+    console.error('No row selected for editing');
+    return;
+  }
+
+  api.patch(`http://127.0.0.1:8000/api/contact/contact_info/${selectedRow.id}/`, newContact)
+    .then(response => {
+      setRows(prevRows => {
+        const updatedRows = prevRows.map(row => {
+          if (row.id === selectedRow.id) {
+            return { ...row, ...newContact };
+          }
+          return row;
         });
-        handleCloseModal();
-      })
-      .catch(error => {
-        console.error('Error updating contact:', error);
+        return updatedRows;
       });
-  };
+      handleCloseModal();
+    })
+    .catch(error => {
+      console.error('Error updating contact:', error);
+    });
+};
 
   const handleDelete = (row) => {
     api.delete(`http://127.0.0.1:8000/api/contact/contact_info/${row.id}/`)
