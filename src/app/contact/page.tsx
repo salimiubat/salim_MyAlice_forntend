@@ -42,7 +42,7 @@ export default function ContactInfoTable() {
     api.post('contact/contact_info/', newContact)
       .then(response => {
         if (response.data) {
-          setRows([...rows, response.data]);
+          setRows(prevRows => [...prevRows, response.data]); 
           handleAddCloseModal();
         } else {
           console.error('Error adding new contact: response data is null or undefined');
