@@ -20,7 +20,7 @@ export default function ContactInfoTable() {
   const [openModal, setOpenModal] = React.useState(false);
   const [openAddModal, setAddopenModal] = React.useState(false);
 
-  const [selectedRow, setSelectedRow] = React.useState(null);
+  const [selectedRow, setSelectedRow] = React.useState<Contact | null>(null);
   const [newContact, setNewContact] = React.useState({
     name: '',
     email: '',
