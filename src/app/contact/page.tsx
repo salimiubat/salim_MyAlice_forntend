@@ -67,7 +67,7 @@ export default function ContactInfoTable() {
   };
   
 
-  const handleEdit = (row) => {
+  const handleEdit = (row: Contact) => {
     setSelectedRow(row);
     setNewContact({
       name: row.name,
