@@ -2,10 +2,21 @@
 import * as React from 'react';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField } from '@mui/material';
 import api from '../components/Config';
+
+interface Contact {
+  id: number;
+  name: string;
+  email: string;
+  phone_number: string;
+  address: string;
+}
+
 export default function ContactInfoTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [rows, setRows] = React.useState([]);
+  const [rows, setRows] = React.useState<Contact[]>([]); 
+
+  // const [rows, setRows] = React.useState([]);
   const [openModal, setOpenModal] = React.useState(false);
   const [openAddModal, setAddopenModal] = React.useState(false);
 
