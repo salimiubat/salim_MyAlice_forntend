@@ -68,7 +68,7 @@ function RegistrationForm() {
     };
 
     return (
-        <Container maxWidth="sm">
+        <Container maxWidth="sm" style={{  justifyContent: 'center', alignItems: 'center', marginTop:"50px" }}>
 
 
             <h2>Registration form</h2>

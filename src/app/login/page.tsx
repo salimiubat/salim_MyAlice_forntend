@@ -22,14 +22,19 @@ const LoginForm = () => {
       });
     //   dispatch(loginSuccess(response.data));
       localStorage.setItem('token', response.data.access);
-      router.push('/'); 
+            window.location.reload();
+
+      router.push('/contact'); 
     } catch (error) {
       setError('Invalid username or password');
     }
   };
+  window.onload = function() {
+  router.push('/contact'); 
+};
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" style={{  justifyContent: 'center', alignItems: 'center', marginTop:"50px" }}>
       <Typography variant="h4" gutterBottom>
         Login
       </Typography>

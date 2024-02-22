@@ -3,10 +3,8 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 
 export default function Navbar() {
-  // State to hold the authentication status
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Effect hook to check for token in localStorage
   useEffect(() => {
     const token = localStorage.getItem('token');
     setIsAuthenticated(!!token);
@@ -15,6 +13,8 @@ export default function Navbar() {
   const logout = () => {
     localStorage.removeItem('token');
     setIsAuthenticated(false);
+    window.location.reload();
+
   };
 
   return (

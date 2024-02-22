@@ -34,6 +34,8 @@ export default function ContactInfoTable() {
       })
       .catch(error => {
         console.error('Error adding new contact:', error);
+        alert('Please ensure that you have been logged or you have duplicated items.');
+
       });
   };
 
@@ -101,14 +103,16 @@ export default function ContactInfoTable() {
   };
 
   return (
-    <div>
+    <div style={{  justifyContent: 'center', alignItems: 'center', marginTop:"20px" }}>
 
-      <Button variant="contained" color="primary" onClick={handleAddContact}>
+
+      <Paper sx={{ width: '70%',margin:"auto"}}>
+        <h3>All contacts</h3>
+        <Button variant="contained" color="primary" onClick={handleAddContact}>
         Add Contact
       </Button>
-      <Paper sx={{ width: '100%' }}>
-        <h3>All contacts</h3>
         <TableContainer sx={{ maxHeight: 440 }}>
+          
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
