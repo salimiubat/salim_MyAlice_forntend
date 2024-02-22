@@ -26,19 +26,35 @@ export default function ContactInfoTable() {
       });
   }, []);
 
+  // const handleAddNewContact = () => {
+  //   api.post('contact/contact_info/', newContact)
+  //     .then(response => {
+  //       setRows([...rows, response.data]);
+  //       handleAddCloseModal();
+  //     })
+  //     .catch(error => {
+  //       console.error('Error adding new contact:', error);
+  //       alert('Please ensure that you have been logged or you have duplicated items.');
+
+  //     });
+  // };
   const handleAddNewContact = () => {
     api.post('contact/contact_info/', newContact)
       .then(response => {
-        setRows([...rows, response.data]);
-        handleAddCloseModal();
+        if (response.data) {
+          setRows([...rows, response.data]);
+          handleAddCloseModal();
+        } else {
+          console.error('Error adding new contact: response data is null or undefined');
+          alert('Failed to add new contact. Please try again later.');
+        }
       })
       .catch(error => {
         console.error('Error adding new contact:', error);
-        alert('Please ensure that you have been logged or you have duplicated items.');
-
+        alert('Failed to add new contact. Please try again later.');
       });
   };
-
+  
 
   const handleEdit = (row) => {
     setSelectedRow(row);
