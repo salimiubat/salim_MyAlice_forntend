@@ -119,12 +119,10 @@ const handleDelete = (row: Contact) => {
 };
 
 
-  // const handleChangePage = (event, newPage) => {
-  //   setPage(newPage);
-  // };
-  const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
+  const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
+
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
